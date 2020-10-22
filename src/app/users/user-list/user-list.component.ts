@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from "../iuser";
 
 @Component({
@@ -8,6 +8,7 @@ import {IUser} from "../iuser";
 })
 export class UserListComponent implements OnInit {
 
+  text: string;
   p: number = 1;
   page_title = 'User list';
   statusHidden = false;
@@ -40,8 +41,7 @@ export class UserListComponent implements OnInit {
     this.statusHidden = !this.statusHidden;
   }
 
-  search(event) {
-    let keyword = event.target.value;
+  search(keyword) {
     this.filterUser = (keyword) ? this.findUserByName(keyword) : this.users;
   }
 
@@ -58,7 +58,12 @@ export class UserListComponent implements OnInit {
   delete(index) {
     if (confirm('Are you sure?')) {
       this.users.splice(index,1);
+      this.text = 'delete success!'
     }
+  }
+
+  addUser(data) {
+    this.users.push(data)
   }
 
 

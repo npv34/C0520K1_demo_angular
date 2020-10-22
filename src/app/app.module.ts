@@ -8,12 +8,18 @@ import { MenuComponent } from './core/menu/menu.component';
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from "ngx-pagination";
+import { InputSearchComponent } from './component/input-search/input-search.component';
+import { MessageComponent } from './component/message/message.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    MenuComponent
+    MenuComponent,
+    InputSearchComponent,
+    MessageComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

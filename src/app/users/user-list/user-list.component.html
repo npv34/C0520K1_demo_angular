@@ -1,43 +1,65 @@
-<div class="card">
-  <div class="card-header">
-    {{ page_title }}
-  </div>
-  <div class="card-body">
-    <div class="col-12 pb-3">
-      <div class="row">
-        <div class="col-12 col-md-4">
-          <button (click)="disableImage()" class="btn btn-primary">Show/Hide</button>
+<div class="col-12">
+  <div class="row pt-4">
+    <div class="col-4 col-md-4">
+      <div class="card">
+        <div class="card-header text-primary">
+          Add user
         </div>
-        <div class="col-12 col-md-8">
-          <input class="form-control" (keyup)="search($event)" type="text" style="width: 100%">
+        <div class="card-body">
+          <app-user-add (data)="addUser($event)"></app-user-add>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 col-md-8">
+      <div class="card">
+        <div class="card-header">
+          {{ page_title }}
+        </div>
+        <div class="card-body">
+          <div class="col-12 pb-3">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <button (click)="disableImage()" class="btn btn-primary">Show/Hide</button>
+              </div>
+              <div class="col-12 col-md-8">
+                <app-input-search (keyword)="search($event)"></app-input-search>
+              </div>
+            </div>
+          </div>
+          <app-message [message]="text"></app-message>
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" [hidden]="statusHidden">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Group</th>
+              <th scope="col">Role</th>
+              <th></th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of filterUser | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+              <th scope="row">{{  i + 1 }}</th>
+              <td [hidden]="statusHidden"><img [width]="sizeImage" src="{{ user.avatar}}" alt=""></td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.group}}</td>
+              <td>{{ user.role }}</td>
+              <td><input type="checkbox" class="form-check"></td>
+              <td>
+                <button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
+            </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
     </div>
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col" [hidden]="statusHidden">Image</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Group</th>
-        <th scope="col">Role</th>
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of filterUser | paginate: { itemsPerPage: 1, currentPage: p }; let i = index">
-        <th scope="row">{{  i + 1 }}</th>
-        <td [hidden]="statusHidden"><img [width]="sizeImage" src="{{ user.avatar}}" alt=""></td>
-        <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.group}}</td>
-        <td>{{ user.role }}</td>
-        <td>
-          <button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
-      </tr>
-      </tbody>
-    </table>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
+
+
