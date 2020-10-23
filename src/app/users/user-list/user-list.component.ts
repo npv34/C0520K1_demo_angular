@@ -7,7 +7,7 @@ import {IUser} from "../iuser";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
+  disable = true;
   text: string;
   p: number = 1;
   page_title = 'User list';
@@ -66,5 +66,8 @@ export class UserListComponent implements OnInit {
     this.users.push(data)
   }
 
+  disableUser() {
+    this.disable = !this.disable;
+  }
 
 }

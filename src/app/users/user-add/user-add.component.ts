@@ -1,4 +1,5 @@
 import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-add',
@@ -7,23 +8,23 @@ import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 })
 export class UserAddComponent implements OnInit {
 
+  newUserForm: FormGroup;
   @Output() data = new EventEmitter();
-  name: string = '';
-  email: string = '';
-  group: string = '';
-  constructor() { }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.newUserForm = this.formBuilder.group(
+      {
+        name: ['',[Validators.required, Validators.minLength(6)]],
+        email: ['',[Validators.required,Validators.email]],
+        group: ['',[Validators.required]],
+      }
+    )
   }
 
-  getData() {
-    let user = {
-      name: this.name,
-      email: this.email,
-      group: this.group,
-    }
-
-    this.data.emit(user)
+  onSubmit() {
+    this.data.emit(this.newUserForm.value);
   }
 
 }

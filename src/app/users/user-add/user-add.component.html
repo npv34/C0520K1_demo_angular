@@ -1,23 +1,32 @@
 <div>
-  <table class="table table-bordered">
+  <form (ngSubmit)="onSubmit()" [formGroup]="newUserForm">
+    <table class="table table-bordered">
     <tr>
       <td>Name</td>
-      <td><input class="form-control" type="text" [(ngModel)]="name"></td>
+      <td><input class="form-control" type="text" formControlName="name">
+      <div *ngIf="newUserForm.get('name').hasError('required') && newUserForm.touched" class="text-danger">
+        field require
+      </div>
+        <div *ngIf="newUserForm.get('name').hasError('minlength')" class="text-danger">
+          field min length 6
+        </div>
+      </td>
     </tr>
     <tr>
       <td>Email</td>
-      <td><input class="form-control" type="text" [(ngModel)]="email"></td>
+      <td><input class="form-control" type="text" formControlName="email"></td>
     </tr>
     <tr>
       <td>Group</td>
-      <td><input class="form-control" type="text" [(ngModel)]="group"></td>
+      <td><input class="form-control" type="text" formControlName="group" ></td>
     </tr>
     <tr>
       <td></td>
       <td>
-        <button class="btn btn-primary" (click)="getData()">Add</button>
+        <button class="btn btn-primary" type="submit" [disabled]="newUserForm.invalid">Add</button>
       </td>
     </tr>
   </table>
+  </form>
 
 </div>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { MenuComponent } from './core/menu/menu.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from "ngx-pagination";
 import { InputSearchComponent } from './component/input-search/input-search.component';
@@ -19,14 +19,16 @@ import { UserAddComponent } from './users/user-add/user-add.component';
     MenuComponent,
     InputSearchComponent,
     MessageComponent,
-    UserAddComponent
+    UserAddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
