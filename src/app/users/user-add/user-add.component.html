@@ -14,7 +14,14 @@
     </tr>
     <tr>
       <td>Email</td>
-      <td><input class="form-control" type="text" formControlName="email"></td>
+      <td><input class="form-control" type="text" formControlName="email">
+        <div *ngIf="newUserForm.get('email').hasError('required') && newUserForm.touched" class="text-danger">
+          field require
+        </div>
+        <div *ngIf="newUserForm.get('email').hasError('email')" class="text-danger">
+          field not format email
+        </div>
+      </td>
     </tr>
     <tr>
       <td>Group</td>
