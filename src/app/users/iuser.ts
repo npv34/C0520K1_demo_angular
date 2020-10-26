@@ -4,5 +4,6 @@ export interface IUser {
   email: string,
   avatar? : string,
   role: number,
-  group_id: number
+  group_id: number,
+  password?: any
 }
