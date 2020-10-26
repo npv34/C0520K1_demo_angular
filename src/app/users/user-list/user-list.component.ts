@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IUser} from "../iuser";
+import {UserService} from "../../services/user.service";
+import {GroupService} from "../../services/group.service";
 
 @Component({
   selector: 'app-user-list',
@@ -13,27 +15,14 @@ export class UserListComponent implements OnInit {
   page_title = 'User list';
   statusHidden = false;
   filterUser: IUser[];
-  users: IUser[] = [
-    {
-      name: 'Nam',
-      email: 'nam@gmail.com',
-      group: 'C0520K1',
-      avatar: 'https://png.pngtree.com/png-vector/20190704/ourmid/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
-      role: 1,
-    },
-    {
-      name: 'Duc',
-      email: 'duc@gmail.com',
-      group: 'C0520K1',
-      avatar: 'https://png.pngtree.com/element_our/20190604/ourmid/pngtree-user-avatar-boy-image_1482937.jpg',
-      role: 2,
-    }
-  ]
+  users: IUser[] = []
 
   sizeImage = '100';
-  constructor() { }
+  constructor(private userService: UserService,
+              private groupService: GroupService) { }
 
   ngOnInit(): void {
+    this.users = this.userService.getAll();
     this.filterUser = this.users;
   }
 
@@ -42,17 +31,7 @@ export class UserListComponent implements OnInit {
   }
 
   search(keyword) {
-    this.filterUser = (keyword) ? this.findUserByName(keyword) : this.users;
-  }
-
-  findUserByName(name: string) : IUser[]{
-      let result: IUser[] = [];
-      for(let user of this.users) {
-        if (user.name.toLowerCase().includes(name.toLowerCase())) {
-          result.push(user);
-        }
-      }
-      return result;
+    this.filterUser = (keyword) ? this.userService.findUserByName(keyword) : this.users;
   }
 
   delete(index) {
