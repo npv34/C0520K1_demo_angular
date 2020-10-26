@@ -25,13 +25,27 @@ export class UserAddComponent implements OnInit {
         name: ['',[Validators.required, Validators.minLength(6)]],
         email: ['',[Validators.required,Validators.email]],
         group_id: ['',[Validators.required]],
+        avatar: ['', [Validators.required]],
+        fileSource: ['']
       }
     )
     this.groups = this.groupService.getAll();
   }
 
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.newUserForm.patchValue({
+        fileSource: file
+      });
+    }
+  }
+
   onSubmit() {
+    const formData = new FormData();
+    formData.append('file', this.newUserForm.get('fileSource').value);
     let data = this.newUserForm.value;
+    console.log(this.newUserForm)
     this.userService.add(data);
     this.route.navigate(['users'])
   }

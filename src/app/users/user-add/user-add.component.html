@@ -29,6 +29,15 @@
         <option *ngFor="let group of groups" value="{{group.id}}">{{group.name}}</option>
       </select></td>
     </tr>
+      <tr>
+        <td>Avatar</td>
+        <td>
+          <input type="file" formControlName="avatar" (change)="onFileChange($event)">
+          <div class="progress mt-2">
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+        </td>
+      </tr>
     <tr>
       <td></td>
       <td>
