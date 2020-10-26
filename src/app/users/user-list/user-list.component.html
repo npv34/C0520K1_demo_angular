@@ -1,6 +1,6 @@
 <div class="col-12">
   <div class="row pt-4">
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-12">
       <div class="card">
         <div class="card-header">
           {{ page_title }}
@@ -9,7 +9,8 @@
           <div class="col-12 pb-3">
             <div class="row">
               <div class="col-12 col-md-4">
-                <button (click)="disableImage()" class="btn btn-primary">Show/Hide</button>
+                <button (click)="disableImage()" class="btn btn-primary mr-2">Show/Hide</button>
+                <button routerLink="add" class="btn btn-success">Create</button>
               </div>
               <div class="col-12 col-md-8">
                 <app-input-search (keyword)="search($event)"></app-input-search>
@@ -40,7 +41,7 @@
               <td>{{ user.role }}</td>
               <td><input type="checkbox" class="form-check"></td>
               <td>
-                <button [disabled]="disable" class="btn btn-danger" (click)="delete(i)">Delete</button>
+                <button [disabled]="disable" class="btn btn-danger mr-2" (click)="delete(i)">Delete</button>
                 <button class="btn btn-primary" [routerLink]="[user.id, 'edit']">Edit</button>
               </td>
             </tr>
