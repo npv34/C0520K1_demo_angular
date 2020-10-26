@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  message: string;
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private router: Router) { }
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
       window.localStorage.setItem('userLogin', JSON.stringify(userCurrent));
       this.router.navigate(['admin'])
     } else {
+      this.message = 'Tài khoản hoặc mất khẩu không đúng!'
       this.router.navigate(['login'])
     }
 
