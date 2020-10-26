@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppLayoutComponent implements OnInit {
 
+  userLogin;
   constructor() { }
 
   ngOnInit(): void {
+    this.userLogin = JSON.parse(localStorage.getItem('userLogin'));
+    console.log(this.userLogin)
   }
 
 }
