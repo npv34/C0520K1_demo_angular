@@ -20,4 +20,13 @@ export class GroupService {
   getAll() {
     return this.groups;
   }
+
+  getGroupNameById(id: number): string{
+    for (const g of this.groups){
+      if (g.id == id){
+        return g.name;
+      }
+    }
+    return "khong ton tai";
+  }
 }

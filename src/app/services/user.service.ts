@@ -7,6 +7,7 @@ import {IUser} from "../users/iuser";
 export class UserService {
   users: IUser[] = [
     {
+      id: 1,
       name: 'Nam',
       email: 'nam@gmail.com',
       avatar: 'https://png.pngtree.com/png-vector/20190704/ourmid/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg',
@@ -14,6 +15,7 @@ export class UserService {
       group_id: 1
     },
     {
+      id: 2,
       name: 'Duc',
       email: 'duc@gmail.com',
       avatar: 'https://png.pngtree.com/element_our/20190604/ourmid/pngtree-user-avatar-boy-image_1482937.jpg',
@@ -35,5 +37,9 @@ export class UserService {
       }
     }
     return result;
+  }
+
+  add(data: IUser) {
+    this.users.push(data)
   }
 }

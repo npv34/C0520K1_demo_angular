@@ -12,6 +12,9 @@ import { InputSearchComponent } from './component/input-search/input-search.comp
 import { MessageComponent } from './component/message/message.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { GroupListComponent } from './groups/group-list/group-list.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { AppLayoutComponent } from './core/app-layout/app-layout.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { GroupListComponent } from './groups/group-list/group-list.component';
     MessageComponent,
     UserAddComponent,
     GroupListComponent,
+    UserEditComponent,
+    AppLayoutComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
