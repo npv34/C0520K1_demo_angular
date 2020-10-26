@@ -1,16 +1,5 @@
 <div class="col-12">
   <div class="row pt-4">
-    <div class="col-4 col-md-4">
-      <div class="card">
-        <div class="card-header text-primary">
-          Add user
-        </div>
-        <div class="card-body">
-          <app-user-add (data)="addUser($event)"></app-user-add>
-        </div>
-      </div>
-
-    </div>
     <div class="col-12 col-md-8">
       <div class="card">
         <div class="card-header">
@@ -47,11 +36,13 @@
               <td [hidden]="statusHidden"><img [width]="sizeImage" src="{{ user.avatar}}" alt=""></td>
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
-              <td>{{ user.group_id}}</td>
+              <td>{{ groupService.getGroupNameById(user.group_id)}}</td>
               <td>{{ user.role }}</td>
               <td><input type="checkbox" class="form-check"></td>
               <td>
-                <button [disabled]="disable" class="btn btn-danger" (click)="delete(i)">Delete</button></td>
+                <button [disabled]="disable" class="btn btn-danger" (click)="delete(i)">Delete</button>
+                <button class="btn btn-primary" [routerLink]="[user.id, 'edit']">Edit</button>
+              </td>
             </tr>
             </tbody>
           </table>

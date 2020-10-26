@@ -25,12 +25,15 @@
     </tr>
     <tr>
       <td>Group</td>
-      <td><input class="form-control" type="text" formControlName="group" ></td>
+      <td><select class="form-control" formControlName="group_id" >
+        <option *ngFor="let group of groups" value="{{group.id}}">{{group.name}}</option>
+      </select></td>
     </tr>
     <tr>
       <td></td>
       <td>
         <button class="btn btn-primary" type="submit" [disabled]="newUserForm.invalid">Add</button>
+        <button class="btn btn-secondary" routerLink="users">Cancel</button>
       </td>
     </tr>
   </table>
