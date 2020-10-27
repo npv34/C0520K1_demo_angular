@@ -6,23 +6,18 @@ import {UserEditComponent} from "./users/user-edit/user-edit.component";
 import {LoginComponent} from "./core/login/login.component";
 import {AppLayoutComponent} from "./core/app-layout/app-layout.component";
 import {AdminGuard} from "./admin/admin.guard";
+import {UsersModule} from "./users/users.module";
 
 
 const routes: Routes = [
-
   {
     path: 'admin',
     component: AppLayoutComponent,
     children: [
       {
-        path: 'users', component: UserListComponent
-      },
-      {
-        path: 'users/add', component: UserAddComponent
-      },
-      {
-        path: 'users/:id/edit', component: UserEditComponent
-      },
+        path: 'users',
+        loadChildren: (() => import('./users/users.module').then(() => UsersModule)),
+      }
     ],
     canActivate: [AdminGuard]
   },
