@@ -7,6 +7,7 @@ import {LoginComponent} from "./core/login/login.component";
 import {AppLayoutComponent} from "./core/app-layout/app-layout.component";
 import {AdminGuard} from "./admin/admin.guard";
 import {UsersModule} from "./users/users.module";
+import {GroupsModule} from "./groups/groups.module";
 
 
 const routes: Routes = [
@@ -17,7 +18,11 @@ const routes: Routes = [
       {
         path: 'users',
         loadChildren: (() => import('./users/users.module').then(() => UsersModule)),
-      }
+      },
+      {
+        path: 'groups',
+        loadChildren: (() => import('./groups/groups.module').then(() => GroupsModule)),
+      },
     ],
     canActivate: [AdminGuard]
   },

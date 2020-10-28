@@ -9,20 +9,16 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule} from "ngx-pagination";
 import { InputSearchComponent } from './component/input-search/input-search.component';
-import { MessageComponent } from './component/message/message.component';
-import { UserAddComponent } from './users/user-add/user-add.component';
 import { GroupListComponent } from './groups/group-list/group-list.component';
-import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { AppLayoutComponent } from './core/app-layout/app-layout.component';
 import { LoginComponent } from './core/login/login.component';
-import {UsersModule} from "./users/users.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     InputSearchComponent,
-    GroupListComponent,
     AppLayoutComponent,
     LoginComponent,
   ],
@@ -31,9 +27,9 @@ import {UsersModule} from "./users/users.module";
     AppRoutingModule,
     FormsModule,
     NgbModule,
+    HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

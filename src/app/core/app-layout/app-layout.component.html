@@ -22,6 +22,19 @@
               <a class="nav-link" routerLink="users/add">User add</a>
             </nav>
           </div>
+
+          <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseGroupLayouts" aria-expanded="false" aria-controls="collapseGroupLayouts">
+            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+            Group
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+          </a>
+          <div class="collapse" id="collapseGroupLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+              <a class="nav-link" routerLink="users">Group list</a>
+              <a class="nav-link" routerLink="users/add">Group add</a>
+            </nav>
+          </div>
+
           <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
             Page

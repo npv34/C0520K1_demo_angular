@@ -22,8 +22,8 @@ const routes: Routes = [
     UserListComponent,
     UserAddComponent,
     UserEditComponent,
-    MessageComponent
   ],
+  exports: [],
   imports: [
     CommonModule,
     FormsModule,

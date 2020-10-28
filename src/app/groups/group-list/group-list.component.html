@@ -1,1 +1,20 @@
-<p>group-list works!</p>
+<div class="text-success">
+  {{ message}}
+</div>
+<table class="table table-bordered">
+  <tr>
+    <td>STT</td>
+    <td>Name</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let g of groups; let i =index">
+    <td>{{ i + 1}}</td>
+    <td>
+      {{ g.name }}
+    </td>
+    <td>
+      <button class="btn btn-primary" [routerLink]="[g.id, 'edit']">Edit</button>
+      <button class="btn btn-danger" (click)="delete(g.id)">Delete</button>
+    </td>
+  </tr>
+</table>
